@@ -1,0 +1,49 @@
+<div th:fragment="content">
+
+	<table class="table table-striped">
+
+		<thead>
+			<tr>
+				<th style="width: auto;">ID</th>
+				<th style="width: auto;">Name</th>
+				<th style="width: auto;">Description</th>
+				<th style="width: auto;">Status</th>
+				<th style="width: auto;">Due Date</th>
+				<th style="width: auto;">Operations</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="todo : ${todoList}">
+
+				<td><a href="home.html" th:href="@{/}" th:text="${todo.id}"></a>
+				</td>
+
+				<td th:text="${todo.name}" style="word-break: break-all;"></td>
+
+				<td th:text="${todo.desc}" style="word-break: break-all;"></td>
+
+				<td><input type="checkbox" name="active"
+					th:checked="${todo.done}" /></td>
+
+				<td>
+					<p>
+						<span th:text="${#calendars.format(todo.dueDate,'dd-MM-yyyy')}">13-01-2011</span>
+					</p>
+				</td>
+				<td style="word-break: break-all;">
+					<form action="#" th:action="@{/todo/markasdone}" method="post">
+						<button name="id" value="${todo.id}" th:value="${todo.id}"
+							class="btn btn-primary">Change Status</button>
+					</form>
+				</td>
+				<td>
+					<form action="#" th:action="@{/todo/update}" method="get">
+						<button name="id" value="${todo.id}" th:value="${todo.id}"
+							class="btn btn-info">Edit</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

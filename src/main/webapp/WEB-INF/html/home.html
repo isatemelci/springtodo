@@ -1,0 +1,14 @@
+<section th:fragment="content">
+
+	<section class="page-header">
+		<h1 th:text="${message}"></h1>
+	</section>
+
+	<p class="lead" th:inline="text">This is the [[${message}]].</p>
+	<p>
+		Lorem ipsum dolor sit amet, <span id="SomeSpecialText1">consectetuer
+			adipiscing</span> elit. Duis congue vehicula purus.
+	</p>
+
+</section>
+
